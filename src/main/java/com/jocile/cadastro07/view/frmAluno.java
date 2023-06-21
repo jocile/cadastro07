@@ -4,6 +4,8 @@
  */
 package com.jocile.cadastro07.view;
 
+import com.jocile.cadastro07.entitities.Aluno;
+
 /**
  *
  * @author aluno
@@ -33,6 +35,18 @@ public class frmAluno extends javax.swing.JFrame {
         edtIdade.setText("");
         edtMatricula.setText("");
         edtAno.setText("");
+    }
+
+    private Aluno preencheAluno() {
+        Aluno a = new Aluno();
+        a.setNome(edtNome.getText());
+        a.setSexo(edtSexo.getText().charAt(0));
+        int aux = Integer.parseInt(edtIdade.getText());
+        a.setIdade(aux);
+        a.setMatricula(edtMatricula.getText());
+        int ano = Integer.parseInt(edtAno.getText());
+        a.setAnoDeIngresso(ano);
+        return a;
     }
 
     /**
@@ -87,6 +101,11 @@ public class frmAluno extends javax.swing.JFrame {
         btnExcluir.setText("EXCLUIR");
 
         btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         lblNome.setText("Nome:");
 
@@ -200,6 +219,13 @@ public class frmAluno extends javax.swing.JFrame {
         hideShowCampos(false);
         limparTexto();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Aluno a;
+        a = preencheAluno();
+        //mostra o resultado
+        txtResultado.setText(a.toString()); 
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
