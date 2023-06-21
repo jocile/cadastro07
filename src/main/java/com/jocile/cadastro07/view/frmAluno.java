@@ -5,6 +5,7 @@
 package com.jocile.cadastro07.view;
 
 import com.jocile.cadastro07.entitities.Aluno;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,8 +42,15 @@ public class frmAluno extends javax.swing.JFrame {
         Aluno a = new Aluno();
         a.setNome(edtNome.getText());
         a.setSexo(edtSexo.getText().charAt(0));
-        int aux = Integer.parseInt(edtIdade.getText());
-        a.setIdade(aux);
+        String idadeLida = edtIdade.getText();
+        if (!idadeLida.isEmpty()) {
+            int aux = Integer.parseInt(idadeLida);
+            a.setIdade(aux);
+        } else {
+            JOptionPane.showMessageDialog(
+                    this, "Campo Idade obrigatório. ");
+            edtIdade.requestFocus();
+        }
         a.setMatricula(edtMatricula.getText());
         int ano = Integer.parseInt(edtAno.getText());
         a.setAnoDeIngresso(ano);
@@ -225,7 +233,7 @@ public class frmAluno extends javax.swing.JFrame {
         Aluno a;
         a = preencheAluno();
         //mostra o resultado
-        txtResultado.setText(a.toString()); 
+        txtResultado.setText(a.toString());
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
