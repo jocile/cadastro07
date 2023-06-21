@@ -18,13 +18,23 @@ public class frmAluno extends javax.swing.JFrame {
 
         hideShowCampos(false);
     }
-private void hideShowCampos(boolean flag) {
+
+    private void hideShowCampos(boolean flag) {
         edtNome.setEnabled(flag);
         edtSexo.setEnabled(flag);
         edtIdade.setEnabled(flag);
         edtMatricula.setEnabled(flag);
         edtAno.setEnabled(flag);
     }
+
+    private void limparTexto() {
+        edtNome.setText("");
+        edtSexo.setText("");
+        edtIdade.setText("");
+        edtMatricula.setText("");
+        edtAno.setText("");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +76,11 @@ private void hideShowCampos(boolean flag) {
         });
 
         btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("EDITAR");
 
@@ -180,6 +195,11 @@ private void hideShowCampos(boolean flag) {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         hideShowCampos(true);
     }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        hideShowCampos(false);
+        limparTexto();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
