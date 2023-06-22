@@ -5,6 +5,7 @@
 package com.jocile.cadastro07.view;
 
 import com.jocile.cadastro07.entitities.Aluno;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,9 +17,12 @@ public class frmAluno extends javax.swing.JFrame {
     /**
      * Creates new form frmAluno
      */
+    private ArrayList<Aluno> lista;
+
     public frmAluno() {
         initComponents();
 
+        lista = new ArrayList<>();
         hideShowCampos(false);
     }
 
@@ -55,6 +59,16 @@ public class frmAluno extends javax.swing.JFrame {
         int ano = Integer.parseInt(edtAno.getText());
         a.setAnoDeIngresso(ano);
         return a;
+    }
+
+    public String mostrarLista() {
+        String listaCompleta = "";
+
+        for (int i = 0; i <= lista.size() - 1; i++) {
+            Aluno aux = lista.get(i);
+            listaCompleta = listaCompleta + aux.toString();
+        }
+        return listaCompleta;
     }
 
     /**
@@ -246,6 +260,7 @@ public class frmAluno extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         hideShowCampos(true);
+        limparTexto();
         edtNome.requestFocus();
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -257,8 +272,10 @@ public class frmAluno extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Aluno a;
         a = preencheAluno();
+        this.lista.add(a);
+
         //mostra o resultado
-        txtResultado.setText(a.toString());
+        txtResultado.setText(this.mostrarLista());
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void edtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtNomeKeyReleased
@@ -280,9 +297,9 @@ public class frmAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_edtIdadeKeyReleased
 
     private void edtMatriculaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtMatriculaKeyReleased
-        if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
             edtAno.requestFocus();
-  }
+        }
     }//GEN-LAST:event_edtMatriculaKeyReleased
 
     /**
