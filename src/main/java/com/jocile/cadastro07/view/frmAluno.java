@@ -125,6 +125,30 @@ public class frmAluno extends javax.swing.JFrame {
 
         lblAno.setText("Ano de ingresso:");
 
+        edtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtNomeKeyReleased(evt);
+            }
+        });
+
+        edtSexo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtSexoKeyReleased(evt);
+            }
+        });
+
+        edtIdade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtIdadeKeyReleased(evt);
+            }
+        });
+
+        edtMatricula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtMatriculaKeyReleased(evt);
+            }
+        });
+
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
@@ -222,6 +246,7 @@ public class frmAluno extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         hideShowCampos(true);
+        edtNome.requestFocus();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -235,6 +260,30 @@ public class frmAluno extends javax.swing.JFrame {
         //mostra o resultado
         txtResultado.setText(a.toString());
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void edtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtNomeKeyReleased
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
+            edtSexo.requestFocus();
+        }
+    }//GEN-LAST:event_edtNomeKeyReleased
+
+    private void edtSexoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSexoKeyReleased
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
+            edtIdade.requestFocus();
+        }
+    }//GEN-LAST:event_edtSexoKeyReleased
+
+    private void edtIdadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtIdadeKeyReleased
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
+            edtMatricula.requestFocus();
+        }
+    }//GEN-LAST:event_edtIdadeKeyReleased
+
+    private void edtMatriculaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtMatriculaKeyReleased
+        if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+            edtAno.requestFocus();
+  }
+    }//GEN-LAST:event_edtMatriculaKeyReleased
 
     /**
      * @param args the command line arguments
