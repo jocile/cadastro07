@@ -175,6 +175,11 @@ public class frmAluno extends javax.swing.JFrame {
         });
 
         btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("SALVAR");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -380,6 +385,18 @@ public class frmAluno extends javax.swing.JFrame {
         this.copiarDaListaParaCampos(indiceDeEdicao);
         this.hideShowCampos(true);
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String matriculaInformada = JOptionPane.showInputDialog("Informe o aluno a ser excluido", "<informe a matrícula>");
+        
+        int index = this.pesquisarAluno(matriculaInformada);
+        
+        this.lista.remove(index);
+        
+        //mostra o resultado
+        txtResultado.setText(this.mostrarLista());
+        limparTexto();
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
